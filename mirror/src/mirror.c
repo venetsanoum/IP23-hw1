@@ -66,7 +66,7 @@ int main (int argc, char **argv) {
 
     
     unsigned long long sum = 0; //Initialize the sum
-    for (unsigned long long i = lower; i <= (long double)sqrt(upper); i++) {
+    for (unsigned long long i = round(sqrt(lower)); i <= (long double)sqrt(upper); i++) {
         //Creating the squares that will be added in the sum. (i <= (long double)sqrt(upper);)
 
         unsigned long long number1 = mirror(i*i); //Calling mirror function to check if the squareroot of i*i (which is a number in the range) is prime.
@@ -88,3 +88,4 @@ int main (int argc, char **argv) {
 
 
 }
+
