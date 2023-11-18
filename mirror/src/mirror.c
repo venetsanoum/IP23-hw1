@@ -3,10 +3,10 @@
 #include <math.h>
 
 int prime (unsigned long long n){
-    if (n == 1) { //1 not prime
+    if (n == 1) { //1 is not prime
         return 1;
     }
-    if (n == 2 || n == 3) { // 2 and 3 not prime numbers 
+    if (n == 2 || n == 3) { // 2 and 3 are prime numbers 
         return 0;
     }
 
@@ -18,7 +18,7 @@ int prime (unsigned long long n){
 
          // n % i == 0: This checks if n is divisible by the value of i. 
         // n % (i + 2) == 0: This checks if n is divisible by i + 2, which is essentially checking for divisibility by the next possible divisor after i.               
-        
+
         if (n % i == 0|| n % (i+2) == 0) { //for loop continues until i*i>n. Because if it has a divisor larger
             return 1;     //than its square root, it must also have a corresponding factor smaller than its square root, which means that the number is not prime. 
                           
@@ -29,7 +29,7 @@ int prime (unsigned long long n){
 
 
 unsigned long long reverse (unsigned long long n) { //Function that returns the mirror of a number.
-    unsigned long long reversed = 0; //Initialize mirror number to 0
+    unsigned long long reversed = 0; //Initialize mirror number to 0.
     unsigned long long remain ;
     while (n != 0) { //Repeat until all digits have been processed.
         remain = n % 10; //Find the last digit of n
