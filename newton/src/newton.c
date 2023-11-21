@@ -11,7 +11,7 @@ double derivative ( double a1, double a2, double a3, double a4, double a5, doubl
     
    return 5*a5*pow(x,4) + 4*a4*pow(x,3) + 3*a3*pow(x,2) + 2*a2*pow(x,1) +a1 ;
 }
-//The pow() function takes two arguments (base value and power value) and, returns the power raised to the base number
+// pow() function takes two arguments (base value and power value) and, returns the power raised to the base number
 
 
 
@@ -24,12 +24,12 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
     int loopCount = 0; //Initialize the loop counter 
      while (loopCount < 1000) { //As long as 1000 repetitions have not been exceeded
 
-        if (derivativefx == 0) { //If f'(root) is zero then the function diverges and we have division by 0
+        if (derivativefx == 0) { //If f'(root) is zero then the function diverges, we have division by 0
              //and the program prints "nan"
             printf("nan\n"); 
             return 0;
         }
-        double nextroot = root - fx / derivativefx ; //Εύρεση της επόμενη ρίζας μέσω της εξίσωσης που δίνεται απο την εκφώνση
+        double nextroot = root - fx / derivativefx ; //Finding the next root through the equation given
         if (fabs(nextroot - root) < 1e-6 ) { // If the absolute value of the difference of the next from the previous root is less than 10^-6
                  //the process continues.
             return nextroot;
@@ -43,7 +43,7 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
 
 
      }
-    printf("incomplete\n"); //Outside the while loop, 1000 loops will have beec exceeded
+    printf("incomplete\n"); //Outside the while loop, 1000 loops will have been exceeded
     return 0;   //so the program prints "incomplete"
      }
     
