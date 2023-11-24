@@ -34,7 +34,7 @@ unsigned long long mirror (unsigned long long n) { //Function that returns the m
     while (n != 0) { //Repeat until all digits have been processed.
         remain = n % 10; //Find the last digit of n
         reversed = 10 * reversed + remain;//I multiply the reversed number by 10 and add the remainder of dividing n by 10 to create the mirror number.
-        n = n / 10; //I update n by removing its last digit.
+        n /= 10; //I update n by removing its last digit.
     }
     return reversed; //Return mirror number.
 
