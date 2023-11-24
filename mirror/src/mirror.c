@@ -78,7 +78,7 @@ int main (int argc, char **argv) {
         long double squarerootn = (long double)sqrt(reversenumber1);
         if (squarerootn == floor(squarerootn)) { //Check if the mirror number is a perfect square (only if its root is an integer)
     
-            if (number1 != 0  && number2 !=0  && number1 != number2) { //If the number and its mirror are prime and the number is not palindromic. 
+            if (number1 != 0  && number2 != 0   && number1 != number2) { //If the number and its mirror are prime and the number is not palindromic. 
                 sum += number1; //Increase the sum by the number that is mirror prime number.
             }
         }
