@@ -24,7 +24,7 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
     int loopCount = 0; //Initialize the loop counter 
      while (loopCount < 1000) { //As long as 1000 repetitions have not been exceeded
 
-        if (derivativefx == 0) { //If f'(root) is zero then the function diverges, we have division by 0
+        if (derivativefx == 0 || isinf(root) || isnanf(root)) { //If f'(root) is zero or root is infinite or is not a number then the function diverges, we have division by 0
              //and the program prints "nan"
             printf("nan\n"); 
             return 0;
