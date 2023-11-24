@@ -28,7 +28,7 @@ int prime (unsigned long long n){
 }
 
 
-unsigned long long reverse (unsigned long long n) { //Function that returns the mirror of a number.
+unsigned long long mirror (unsigned long long n) { //Function that returns the mirror of a number.
     unsigned long long reversed = 0; //Initialize mirror number to 0.
     unsigned long long remain ;
     while (n != 0) { //Repeat until all digits have been processed.
@@ -40,7 +40,7 @@ unsigned long long reverse (unsigned long long n) { //Function that returns the 
 
 }
 
-unsigned long long mirror(unsigned long long number) {
+unsigned long long FindRequiredRoot(unsigned long long number) {
     long double squarerootn = (long double)sqrt(number); //Find the squareroot of the number.
     if (prime(squarerootn) != 0) { //If the squareroot is not prime return 0.
         return 0; 
@@ -66,12 +66,12 @@ int main (int argc, char **argv) {
 
     
     unsigned long long sum = 0; //Initialize the sum
-    for (unsigned long long i = round(sqrt(lower)); i <= (long double)sqrt(upper); i++) {
+    for (unsigned long long i = (long double)sqrt(lower); i <= (long double)sqrt(upper); i++) {
         //Creating the squares that will be added in the sum. (i <= (long double)sqrt(upper);)
 
-        unsigned long long number1 = mirror(i*i); //Calling mirror function to check if the squareroot of i*i (which is a number in the range) is prime.
-        unsigned long long reversenumber1 = reverse(i*i); //The mirror of a number (number =i*i because i create the squares that will be added)
-        unsigned long long number2 = mirror(reversenumber1);//Calling mirror function to check if the squareroot of the mirror number is prime.
+        unsigned long long number1 = FindRequiredRoot(i*i); //Calling mirror function to check if the squareroot of i*i (which is a number in the range) is prime.
+        unsigned long long reversenumber1 = mirror(i*i); //The mirror of a number (number =i*i because i create the squares that will be added)
+        unsigned long long number2 = FindRequiredRoot(reversenumber1);//Calling mirror function to check if the squareroot of the mirror number is prime.
 
 
 
@@ -88,4 +88,3 @@ int main (int argc, char **argv) {
 
 
 }
-
