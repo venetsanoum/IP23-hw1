@@ -40,14 +40,14 @@ unsigned long long mirror (unsigned long long n) { //Function that returns the m
 
 }
 
-unsigned long long FindRequiredRoot(unsigned long long number) {
-    long double squarerootn = (long double)sqrt(number); //Find the squareroot of the number.
-    if (prime(squarerootn) != 0) { //If the squareroot is not prime return 0.
-        return 0; 
+unsigned long long perfectsquare(unsigned long long number) {
+    if ((long double)sqrt(number) == floor ((long double)sqrt(number))) { //Check if the mirror number is a perfect square (only if its root is an integer)
+    
+        return 0;
     }
-
-    return number;  //Otherwise return the number
+  return 1;
 }
+
 
 
 int main (int argc, char **argv) {
@@ -68,20 +68,21 @@ int main (int argc, char **argv) {
     unsigned long long sum = 0; //Initialize the sum
     for (unsigned long long i = (long double)sqrt(lower); i <= (long double)sqrt(upper); i++) {
         //Creating the squares that will be added in the sum. (i <= (long double)sqrt(upper);)
-
-        unsigned long long number1 = FindRequiredRoot(i*i); //Calling mirror function to check if the squareroot of i*i (which is a number in the range) is prime.
-        unsigned long long reversenumber1 = mirror(i*i); //The mirror of a number (number =i*i because i create the squares that will be added)
-        unsigned long long number2 = FindRequiredRoot(reversenumber1);//Calling mirror function to check if the squareroot of the mirror number is prime.
-
-
-
-        long double squarerootn = (long double)sqrt(reversenumber1);
-        if (squarerootn == floor(squarerootn)) { //Check if the mirror number is a perfect square (only if its root is an integer)
-    
-            if (number1 != 0  && number2 != 0   && number1 != number2) { //If the number and its mirror are prime and the number is not palindromic. 
-                sum += number1; //Increase the sum by the number that is mirror prime number.
+            if (prime(i) == 0) { //Check if i is prime
+                unsigned long long mirrornumber = mirror(i*i);
+                if (prime ((long double)sqrt(mirrornumber)) == 0 )  { //check if the square root of mirror number is prime
+                    if (perfectsquare(i*i) == 0 && perfectsquare(mirrornumber) == 0 && (i*i) != mirrornumber){ 
+                        //check if i squared is perfect square, if mirror  i squared is perfect square and if squared i and its mirror are not palindromic
+                        sum += i*i;
+                    }
+                    
+                }
             }
-        }
+                  
+
+
+
+        
 }
     printf("%lld\n" ,sum); 
     return 0;
