@@ -73,19 +73,13 @@ int main (int argc, char **argv) {
                 if (prime ((long double)sqrt(mirrornumber)) == 0 )  { //check if the square root of mirror number is prime
                     if (perfectsquare(i*i) == 0 && perfectsquare(mirrornumber) == 0 && (i*i) != mirrornumber){ 
                         //check if i squared is perfect square, if mirror  i squared is perfect square and if squared i and its mirror are not palindromic
-                        printf("%lld\n" ,i*i);
+                       sum += i*i; 
                     }
                     
                 }
             }
-                  
-
-
-
         
 }
     printf("%lld\n" ,sum); 
     return 0;
-
-
 }
