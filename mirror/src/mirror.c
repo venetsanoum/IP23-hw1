@@ -40,7 +40,7 @@ unsigned long long mirror (unsigned long long n) { //Function that returns the m
 
 }
 
-unsigned long long perfectsquare(unsigned long long number) {
+int perfectsquare(unsigned long long number) {
     if ((long double)sqrt(number) == floor ((long double)sqrt(number))) { //Check if the mirror number is a perfect square (only if its root is an integer)
     
         return 0;
@@ -73,7 +73,7 @@ int main (int argc, char **argv) {
                 if (prime ((long double)sqrt(mirrornumber)) == 0 )  { //check if the square root of mirror number is prime
                     if (perfectsquare(i*i) == 0 && perfectsquare(mirrornumber) == 0 && (i*i) != mirrornumber){ 
                         //check if i squared is perfect square, if mirror  i squared is perfect square and if squared i and its mirror are not palindromic
-                        sum += i*i;
+                        printf("%lld\n" ,i*i);
                     }
                     
                 }
