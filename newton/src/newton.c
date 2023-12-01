@@ -29,6 +29,13 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
             printf("nan\n"); 
             return 0;
         }
+
+        if (root == 0.00) { //if the root of the polynomial is 0 then it prints 0.00 
+         printf("0.00\n");
+         return 0;
+        }
+
+
         double nextroot = root - fx / derivativefx ; //Finding the next root through the equation given
         if (fabs(nextroot - root) < 1e-6 ) { // If the absolute value of the difference of the next from the previous root is less than 10^-6
                  //the process continues.
