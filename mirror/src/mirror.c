@@ -10,7 +10,7 @@ int prime (unsigned long long n){
         return 0;
     }
 
-    if (n % 2 == 0 || n % 3 == 0) { // If a number is divisible by 2 or 3 (and is not 2 or 3)
+   if (n % 2 == 0 || n % 3 == 0) { // If a number is divisible by 2 or 3 (and is not 2 or 3)
         return 1;   //then it is not prime. A significant amount of numbers is eliminated with this if statement.
     }
 
@@ -19,14 +19,13 @@ int prime (unsigned long long n){
          // n % i == 0: This checks if n is divisible by the value of i. 
         // n % (i + 2) == 0: This checks if n is divisible by i + 2, which is essentially checking for divisibility by the next possible divisor after i.               
 
-        if (n % i == 0|| n % (i+2) == 0) { //for loop continues until i*i>n. Because if it has a divisor larger
+        if (n % i == 0 || n % (i + 2) == 0) { //for loop continues until i*i>n. Because if it has a divisor larger
             return 1;     //than its square root, it must also have a corresponding factor smaller than its square root, which means that the number is not prime. 
                           
         }
     }
     return 0;
 }
-
 
 unsigned long long mirror (unsigned long long n) { //Function that returns the mirror of a number.
     unsigned long long reversed = 0; //Initialize mirror number to 0.
@@ -40,12 +39,9 @@ unsigned long long mirror (unsigned long long n) { //Function that returns the m
 
 }
 
-int perfectsquare(unsigned long long number) {
-    if ((long double)sqrt(number) == floor ((long double)sqrt(number))) { //Check if the mirror number is a perfect square (only if its root is an integer)
-    
-        return 0;
-    }
-  return 1;
+ int perfectsquare(unsigned long long  n){ //Function that finds if a number n is a perfect square.
+    unsigned long long root=(long long)(sqrt(n));
+        return root*root==n;   
 }
 
 
@@ -67,19 +63,20 @@ int main (int argc, char **argv) {
     
     unsigned long long sum = 0; //Initialize the sum
     for (unsigned long long i = (long double)sqrt(lower); i <= (long double)sqrt(upper); i++) {
-        //Creating the squares that will be added in the sum. (i <= (long double)sqrt(upper);)
-            if (prime(i) == 0) { //Check if i is prime
+        //Creating the squares that will be added in the sum. (i = (long double)sqrt(lower); i <= (long double)sqrt(upper);)
+            if (prime(i) ) { //Check if i is prime
                 unsigned long long mirrornumber = mirror(i*i);
-                if (prime ((long double)sqrt(mirrornumber)) == 0 )  { //check if the square root of mirror number is prime
-                    if (perfectsquare(i*i) == 0 && perfectsquare(mirrornumber) == 0 && (i*i) != mirrornumber){ 
-                        //check if i squared is perfect square, if mirror  i squared is perfect square and if squared i and its mirror are not palindromic
-                       sum += i*i; 
+                if ( (i*i) != mirrornumber )   {//if squared i and its mirror are not palindromic 
+                    if (prime ((long double)sqrt(mirrornumber))){ //check if the square root of mirror number is prime
+                        if (perfectsquare(i*i)  && perfectsquare(mirrornumber)  ){ 
+                        //check if i squared is perfect square, if mirror  i squared is perfect square and 
+                            sum += i*i; 
+                        }
                     }
-                    
                 }
             }
         
-}
+    }
     printf("%lld\n" ,sum); 
     return 0;
 }
