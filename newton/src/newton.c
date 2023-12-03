@@ -74,7 +74,7 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
     if (result != 0) { 
       if (isinf(result) || isnan(result)) { //if result is infinite or is not a number then the function diverges.
          printf("nan\n");
-      }else { //If nan or incomplete do not apply, i.e. 2 of the 3 termination conditions, then the result is printed
+      }else { //If nan and incomplete cases do not apply, i.e. 2 of the 3 termination conditions, then the result is printed
          printf("%.2lf\n" ,result); //.2 is for 2 decimal places precision
       }
     return 0;
