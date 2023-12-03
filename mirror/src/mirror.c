@@ -66,7 +66,7 @@ int main (int argc, char **argv) {
         //Creating the squares that will be added in the sum. (i = (long double)sqrt(lower); i <= (long double)sqrt(upper);)
             if (prime(i) ) { //Check if i is prime
                 unsigned long long mirrornumber = mirror(i*i);
-                if ( (i*i) != mirrornumber )   {//if squared i and its mirror are not palindromic 
+                if ( (i*i) != mirrornumber )   {//check if squared i and its mirror are not palindromic 
                     if (prime ((long double)sqrt(mirrornumber))){ //check if the square root of mirror number is prime
                         if (perfectsquare(i*i)  && perfectsquare(mirrornumber)  ){ 
                         //check if i squared is perfect square, if mirror  i squared is perfect square and 
