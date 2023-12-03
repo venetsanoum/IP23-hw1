@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-int prime (unsigned long long n){
+int prime (unsigned long long n){ //Function to check if a number n is prime.
     if (n == 1) { //1 is not prime
         return 1;
     }
@@ -39,7 +39,7 @@ unsigned long long mirror (unsigned long long n) { //Function that returns the m
 
 }
 
- int perfectsquare(unsigned long long  n){ //Function that finds if a number n is a perfect square.
+ int perfectsquare(unsigned long long  n){ //Function to check if a number n is a perfect square.
     unsigned long long root=(long long)(sqrt(n));
         return root*root==n;   
 }
