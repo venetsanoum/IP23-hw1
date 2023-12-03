@@ -30,7 +30,7 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
             return 0;
         }
 
-        if (root == 0.00) { //if the root of the polynomial is 0 then it prints 0.00 
+        if (root == 0.00 && fx == 0) { //if the root of the polynomial is 0 then it prints 0.00 
          printf("0.00\n");
          return 0;
         }
