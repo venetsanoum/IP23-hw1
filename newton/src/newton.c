@@ -24,7 +24,7 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
     int loopCount = 0; //Initialize the loop counter 
      while (loopCount < 1000) { //As long as 1000 repetitions have not been exceeded
 
-        if (derivativefx == 0 || isinf(root) || isnanf(root)) { //If f'(root) is zero or root is infinite or is not a number then the function diverges, we have division by 0
+        if (derivativefx == 0 || isinf(root) || isnanf(root)) { //If f'(root) is zero or root is infinite or is not a number then the function diverges.
              //and the program prints "nan"
             printf("nan\n"); 
             return 0;
@@ -38,7 +38,7 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
 
         double nextroot = root - fx / derivativefx ; //Finding the next root through the equation given
         if (fabs(nextroot - root) < 1e-6 ) { // If the absolute value of the difference of the next from the previous root is less than 10^-6
-                 //the process continues.
+                 //the algorithm converges so root of the polynomial is returned
             return nextroot;
         }
        
@@ -71,10 +71,14 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
         double root = strtod(argv[7], NULL);
 
     double result = newton (a0, a1,a2,a3,a4,a5,root); //Calling newton function
-    if (result != 0) { //If nan or incomplete does not apply, i.e. 2 of the 3 termination conditions, then the result is printed
-    printf("%.2lf\n" ,result); //.2 is for 2 decimal places precision
-    }
+    if (result != 0) { 
+      if (isinf(result) || isnan(result)) { //if result is infinite or is not a number then the function diverges.
+         printf("nan\n");
+      }else { //If nan or incomplete do not apply, i.e. 2 of the 3 termination conditions, then the result is printed
+         printf("%.2lf\n" ,result); //.2 is for 2 decimal places precision
+      }
     return 0;
 
+     }
      }
 
