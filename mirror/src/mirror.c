@@ -64,10 +64,10 @@ int main (int argc, char **argv) {
     unsigned long long sum = 0; //Initialize the sum
     for (unsigned long long i = (long double)sqrt(lower); i <= (long double)sqrt(upper); i++) {
         //Creating the squares that will be added in the sum. (i = (long double)sqrt(lower); i <= (long double)sqrt(upper);)
-            if (prime(i) ) { //Check if i is prime
+            if (prime(i) == 0 ) { //Check if i is prime
                 unsigned long long mirrornumber = mirror(i*i);
                 if ( (i*i) != mirrornumber )   {//check if squared i and its mirror are not palindromic 
-                    if (prime ((long double)sqrt(mirrornumber))){ //check if the square root of mirror number is prime
+                    if (prime ((long double)sqrt(mirrornumber == 0))){ //check if the square root of mirror number is prime
                         if (perfectsquare(i*i)  && perfectsquare(mirrornumber)  ){ 
                         //check if i squared is perfect square, if mirror  i squared is perfect square and 
                             sum += i*i; 
