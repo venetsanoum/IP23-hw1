@@ -56,11 +56,11 @@ int main (int argc, char **argv) {
                 unsigned long long mirrornumber = mirror(i*i);
                 if (perfectsquare(mirrornumber)){  //check if mirror  i squared is perfect square
                     if ( (i*i) != mirrornumber )   {//check if i squared and is not palindromic
-                    if (prime ((long double)sqrt(mirrornumber))){ //check if the square root of mirror number is prime
-                        if (prime(i)) { //check if i is prime 
+                        if (prime ((long double)sqrt(mirrornumber))){ //check if the square root of mirror number is prime
+                            if (prime(i)) { //check if i is prime 
                             sum += i*i;
+                            }
                         }
-                    }
                     }
                 }
             }
