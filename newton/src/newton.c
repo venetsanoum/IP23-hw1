@@ -2,27 +2,26 @@
 #include <stdlib.h>
 #include <math.h>
 
-double polynomial (double a0, double a1, double a2, double a3, double a4, double a5, double x) { //Function to create f(x)
+double polynomial (double a0, double a1, double a2, double a3, double a4, double a5, double x) { //Συνάρτηση για τη δημιουργία του f(x).
    
  return a5 * pow(x,5) + a4 * pow(x,4) + a3 * pow(x,3) +a2 * pow(x,2) +a1 * pow(x,1) +a0 ;
 }
 
-double derivative ( double a1, double a2, double a3, double a4, double a5, double x) { //Function to create f'(x)
-    
+double derivative ( double a1, double a2, double a3, double a4, double a5, double x) { //Συνάρτηση για τη δημιουργία της f'(x).
+       
    return 5*a5*pow(x,4) + 4*a4*pow(x,3) + 3*a3*pow(x,2) + 2*a2*pow(x,1) +a1 ;
 }
-// pow() function takes two arguments (base value and power value) and, returns the power raised to the base number
+//Η συνάρτηση pow()δέχεται δύο ορίσματα (τιμη βάσης και τιμή εκθέτη) και επιστρέφει τη βάση υψωμένη στον εκθέτη.
 
 
 
 
-double newton (double a0, double a1, double a2, double a3, double a4, double a5, double root) {//Newton function that will calculate the roots of the polynomial
-   double fx = polynomial (a0, a1, a2, a3, a4, a5, root); //Finding the value of f for x=root (the first root)
-   double derivativefx = derivative (a1, a2, a3, a4, a5,root); //Finding the value of f' for x=root (the first root)
+double newton (double a0, double a1, double a2, double a3, double a4, double a5, double root) {//Συνάρτηση newton.
+   double fx = polynomial (a0, a1, a2, a3, a4, a5, root); //Υπολογισμός της τιμής της f(x) για x=root.
+   double derivativefx = derivative (a1, a2, a3, a4, a5,root); //Υπολογισμός της τιμής της f'(x) για x=root.   
    
-   
-    int loopCount = 0; //Initialize the loop counter 
-     while (loopCount < 1000) { //As long as 1000 repetitions have not been exceeded
+    int loopCount = 0; //Αρχικοποίηση του μετρητή των επαναλήψεων.
+     while (loopCount < 1000) { //Όσο δεν έχουν ξεπεραστεί οι 1000 επαναλήψεις.
 
         if (derivativefx == 0 || isinf(root) || isnanf(root)) { //If f'(root) is zero or root is infinite or is not a number then the function diverges.
              //and the program prints "nan"
