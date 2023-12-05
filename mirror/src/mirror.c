@@ -26,7 +26,7 @@ unsigned long long mirror (unsigned long long n) { //Συνάρτηση που �
 
 }
 
- int perfectsquare(unsigned long long  n){ //Συνάρτηση που ελέγχει αν εμάς αριθμός είναι τέλειο τετράγωνο.
+ int perfectsquare(unsigned long long  n){ //Συνάρτηση που ελέγχει αν ενάς αριθμός είναι τέλειο τετράγωνο.
     unsigned long long root=(long long)(sqrt(n));
         return root*root==n;
 }
@@ -36,7 +36,7 @@ unsigned long long mirror (unsigned long long n) { //Συνάρτηση που �
 
 int main (int argc, char **argv) {
     if (argc != 3) {
-        printf("Program needs to be called as: ./mirror lower upper\n"); //Αν ο αριθμός των ορισματων δεν είναι σωστός το πρόγραμμα τερματίζει με κωδικό εξόδου 1.
+        printf("Program needs to be called as: ./mirror lower upper\n"); //Αν ο αριθμός των ορισμάτων δεν είναι σωστός το πρόγραμμα τερματίζει με κωδικό εξόδου 1.
         return 1;
     }
 
