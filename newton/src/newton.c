@@ -36,7 +36,7 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
 
 
         double nextroot = root - fx / derivativefx ; //Εύρεση της επόμενης ρίζας μέσω της εξίσωσης που δίνεται.
-        if (fabs(nextroot - root) < 1e-6 ) { // Αν η απόλυτη τιμή της διαφοράς της επόμενης από τη προηγούμενη ρίζα είναι μικρότερη από 10^6,
+        if (fabs(nextroot - root) < 1e-6 ) { // Αν η απόλυτη τιμή της διαφοράς της επόμενης από τη προηγούμενη ρίζα είναι μικρότερη από 10^(-6),
                  //ο αλγόριθμος συγκλίνει και επιστρέφεται η ρίζα.
             return nextroot;
         }
@@ -74,7 +74,7 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
       if (isinf(result) || isnan(result)) { //Αν το αποτέλεσμα ειναι infinite ή not a number τότε ο αλγόριθμος αποκλίνει.
          printf("nan\n");
       }else { //Αν δεν ισχύει το nan ή το incomplete(2 από 3 συνθήκες τερματισμού) τυπώνεται η ρίζα με ακρίβεια 2 δεκαδικών ψηφίων.
-         printf("%.2lf\n" ,result); //.2 είναι για την ακρίβεια 2 δεκαδικών ψηφίων. 
+         printf("%.2f\n" ,result); //.2 είναι για την ακρίβεια 2 δεκαδικών ψηφίων. 
       }
     return 0;
 
