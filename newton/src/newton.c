@@ -23,58 +23,58 @@ double newton (double a0, double a1, double a2, double a3, double a4, double a5,
     int loopCount = 0; //Αρχικοποίηση του μετρητή των επαναλήψεων.
      while (loopCount < 1000) { //Όσο δεν έχουν ξεπεραστεί οι 1000 επαναλήψεις.
 
-        if (derivativefx == 0 || isinf(root) || isnanf(root)) { //If f'(root) is zero or root is infinite or is not a number then the function diverges.
-             //and the program prints "nan"
+        if (derivativefx == 0 || isinf(root) || isnanf(root)) { //Αν f'(root) είναι μηδέν ή η ρίζα ειναι infinite ή not a number τότε ο αλγόριθμος αποκλίνει και το πρόγραμμα τυπώνει *nan*.
+             
             printf("nan\n"); 
             return 0;
         }
 
-        if (root == 0.00 && fx == 0) { //if the root of the polynomial is 0 then it prints 0.00 
+        if (root == 0.00 && fx == 0) { // Αν η ρίζα του πολυωνύμου είναι 0 τότε τυπώνεται 0.00
          printf("0.00\n");
          return 0;
         }
 
 
-        double nextroot = root - fx / derivativefx ; //Finding the next root through the equation given
-        if (fabs(nextroot - root) < 1e-6 ) { // If the absolute value of the difference of the next from the previous root is less than 10^-6
-                 //the algorithm converges so root of the polynomial is returned
+        double nextroot = root - fx / derivativefx ; //Εύρεση της επόμενης ρίζας μέσω της εξίσωσης που δίνεται.
+        if (fabs(nextroot - root) < 1e-6 ) { // Αν η απόλυτη τιμή της διαφοράς της επόμενης από τη προηγούμενη ρίζα είναι μικρότερη από 10^6,
+                 //ο αλγόριθμος συγκλίνει και επιστρέφεται η ρίζα.
             return nextroot;
         }
        
         ++loopCount;
-        root = nextroot; //The root used after the above process will be the new found root
-        fx = polynomial (a0, a1, a2, a3, a4, a5, root); //Finding the new value of f.
-        derivativefx = derivative (a1, a2, a3, a4, a5,root); //Finding the new value of f'
+        root = nextroot; //Η ριζα που θα χρησιμοποιηθεί μετά την παραπάνω διαδικασία είναι η επόμενη ρίζα που βρέθηκε. 
+        fx = polynomial (a0, a1, a2, a3, a4, a5, root); //Εύρεσης της νέας τιμής της f(x).
+        derivativefx = derivative (a1, a2, a3, a4, a5,root); //Εύρεση της νέας τιμής της f'(x).
 
 
 
      }
-    printf("incomplete\n"); //Outside the while loop, 1000 loops will have been exceeded
-    return 0;   //so the program prints "incomplete"
+    printf("incomplete\n"); //Εξω απο το while loop, θα έχουν ξεπεράσει οι 1000 επαναλήψεις 
+    return 0;   //οπότε το πρόγραμμα τυπώνει  "incomplete"
      }
     
 
 
      int main (int argc, char **argv) {
      
-        if (argc != 8) { //If the arguments are not correct (6 factors and 1 root)
+        if (argc != 8) { //Αν τα ορίσματα δεν ειναι σωστα (5 συντελεστές, 1 σταθερος ορος και 1 ριζα)
             printf("Program needs to be called as: ./newton a0 a1 a2 a3 a4 a5 root \n");
             return 1;
         }
-        double a0 = strtod(argv[1], NULL); //The strtod function needs 2 arguments so NULL is used as the second one which does not falsify the result
-        double a1 = strtod(argv[2], NULL); //which does not falsify the result
+        double a0 = strtod(argv[1], NULL); //Strtod function χρειάζεται 2 ορίσματα οπότε ως δεύτερο χρησιμοποιείται το NULL,
+        double a1 = strtod(argv[2], NULL); //που δεν παραποιει το αποτέλεσμα.
         double a2 = strtod(argv[3], NULL);
         double a3 = strtod(argv[4], NULL);
         double a4 = strtod(argv[5], NULL);
         double a5 = strtod(argv[6], NULL);
         double root = strtod(argv[7], NULL);
 
-    double result = newton (a0, a1,a2,a3,a4,a5,root); //Calling newton function
+    double result = newton (a0, a1,a2,a3,a4,a5,root); //Κλήση της συνάρτησης newton.
     if (result != 0) { 
-      if (isinf(result) || isnan(result)) { //if result is infinite or is not a number then the function diverges.
+      if (isinf(result) || isnan(result)) { //Αν το αποτέλεσμα ειναι infinite ή not a number τότε ο αλγόριθμος αποκλίνει.
          printf("nan\n");
-      }else { //If nan and incomplete cases do not apply, i.e. 2 of the 3 termination conditions, then the result is printed
-         printf("%.2lf\n" ,result); //.2 is for 2 decimal places precision
+      }else { //Αν δεν ισχύει το nan ή το incomplete(2 από 3 συνθήκες τερματισμού) τυπώνεται η ρίζα με ακρίβεια 2 δεκαδικών ψηφίων.
+         printf("%.2lf\n" ,result); //.2 είναι για την ακρίβεια 2 δεκαδικών ψηφίων. 
       }
     return 0;
 
