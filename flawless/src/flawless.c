@@ -36,6 +36,14 @@ unsigned long long doubledigits(unsigned long long n) {
     return sum;
 }
 
+int fourdigitnumber(unsigned long long n) {
+    int sum = 0;
+    int firsttwodigits = n/10; //Δυο πρωτα ψηφία
+    int lasttwodigits = n %10; //Δυο τελευταία ψηφία
+    sum = firsttwodigits + lasttwodigits;
+    return sum;
+}
+
 
 
 int main (int argc, char **argv) {
@@ -58,14 +66,22 @@ int main (int argc, char **argv) {
         //Δημιουργία τετραγώνων που θα προσθεθουν στο sum(i = (long double)sqrt(lower); i <= (long double)sqrt(upper);)
             if (perfectsquare(i*i) ) { //Έλεγχος αν το i*i είναι τέλειο τετράγωνο.
                 int digitsum = singledigits(i*i);
-                if ((digitsum * digitsum) == i*i ) { //Αν το αθροισμα των ψηφίων στο τετράγωνο είναι ισο με τον αριθμό τοτε ο αριθμός είναι αψογο τετράγωνο.
+                if((i*i) < 100){
+                  if ((digitsum * digitsum) == i*i ) { //Αν το αθροισμα των ψηφίων στο τετράγωνο είναι ισο με τον αριθμό τοτε ο αριθμός είναι αψογο τετράγωνο.
                     FlawlessSum +=i*i;
+                  }
                 }else {
                     int twodigitsum = doubledigits(i*i) ;
-                    if (twodigitsum*twodigitsum == i*i) {
+                        if (twodigitsum*twodigitsum == i*i) {
                         FlawlessSum += i*i;
-                    }
-                }
+                        }else {
+                            int doubledigits = fourdigitnumber(i*i);
+                            if(doubledigits*doubledigits == i*i) {
+                                FlawlessSum += i*i;
+                            }
+                        }
+
+                } 
             }
     }
 
