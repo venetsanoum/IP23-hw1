@@ -36,11 +36,24 @@ unsigned long long doubledigits(unsigned long long n) {
     return sum;
 }
 
-int fourdigitnumber(unsigned long long n) {
+int DoubleDigits(unsigned long long n) {
     int sum = 0;
+    if (n>999 && n <10000){ //Εφοσον ειναι τετραψήφιος αριθμός.
     int firsttwodigits = n/10; //Δυο πρωτα ψηφία
     int lasttwodigits = n %10; //Δυο τελευταία ψηφία
     sum = firsttwodigits + lasttwodigits;
+    }
+    return sum;
+}
+
+int TripleDigits(unsigned long long n) {
+    int sum = 0;
+    if(n > 999 ) {
+    
+    int threedigits = n / 100; //Πρωτα 3 ψηφία
+    int remaindigits = n % 100; //υπολοιπα ψηφία
+    sum = threedigits + remaindigits;
+    }
     return sum;
 }
 
@@ -66,22 +79,24 @@ int main (int argc, char **argv) {
         //Δημιουργία τετραγώνων που θα προσθεθουν στο sum(i = (long double)sqrt(lower); i <= (long double)sqrt(upper);)
             if (perfectsquare(i*i) ) { //Έλεγχος αν το i*i είναι τέλειο τετράγωνο.
                 int digitsum = singledigits(i*i);
-                if((i*i) < 100){
+                if((i*i) < 100){ //Αν ο αριθμός είναι διψήφιος χωρίζεται σε μονα ψηφία
                   if ((digitsum * digitsum) == i*i ) { //Αν το αθροισμα των ψηφίων στο τετράγωνο είναι ισο με τον αριθμό τοτε ο αριθμός είναι αψογο τετράγωνο.
                     FlawlessSum +=i*i;
                   }
-                }else {
+                }else { //αλλιώς ελέγχονται και άλλες περιπτώσεις χωρισμού ψηφίων
                     int twodigitsum = doubledigits(i*i) ;
                         if (twodigitsum*twodigitsum == i*i) {
                         FlawlessSum += i*i;
                         }else {
-                            int doubledigits = fourdigitnumber(i*i);
-                            if(doubledigits*doubledigits == i*i) {
+                            int doubledigits = DoubleDigits(i*i);
+                            int tripledigits = TripleDigits(i*i);
+                            if((doubledigits*doubledigits == i*i) || (tripledigits*tripledigits == i*i)) {
                                 FlawlessSum += i*i;
                             }
-                        }
+                        } 
+                        
 
-                } 
+                    } 
             }
     }
 
